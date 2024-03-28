@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CI calculator</title>
+    <style>
+        body{
+            /* background-color: bisque; */
+            color: white;
+            margin: 0;
+            padding: 0;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: xx-large;
+            background-image: url(BG1.JPG);
+        }
+        .center { 
+			display: flex; 
+			justify-content: center; 
+			color: rgb(255, 255, 255); 
+            font-size: large;
+		} 
+        .brutoHeaderFooter{
+            height: auto;
+            width: auto;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+                
+        }
+        
+        .bruto {
+                /* Center the background image */
+                background-position: center;
+                /* Make the background image cover the entire viewport */
+                background-size: cover;
+                /* Prevent background image from repeating */
+                background-repeat: no-repeat;
+                /* Display flex and center content horizontally and vertically */
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-content: normal;
+                align-items: center;
+                margin-left: auto;
+                margin-right: auto;
+                height: 300px;
+                width: 300px;
+                background: rgba(238, 238, 238, 0.2);
+                border-radius: 10px;
+                /* border-color: black; */
+                border: 0.1px solid rgb(255, 255, 255); 
+                box-shadow: 10px 10px 10px rgba(34, 32, 32, 0.4);
+                }
+            button {
+                padding: 8px 20px; /* Add padding for button */
+                background-color: #fd7b77; /* Set button background color */
+                color: #fff; /* Set button text color */
+                border: none; /* Remove button border */
+                border-radius: 5px; /* Add rounded corners to button */
+                cursor: pointer; /* Change cursor to pointer on hover */
+                }
+            button:hover {
+                background-color: #ff1f1f; /* Change button background color on hover */
+                }
+            #result {
+                margin-top: 10px; /* Add spacing between result and calculate button */
+                }
+    </style>
+</head>
+<body> 
+    <div class="brutoHeaderFooter">
+        <p>Compound Interest calculator</p>
+    </div>
+    <div class="bruto">
+        <div class="center">
+            <input type="number" id="principal" placeholder="Enter the principal">
+        </div>
+        <div class="center">
+          <input type="number" id="rate" placeholder="Enter the rate of interest">
+        </div>
+        <div class="center">
+            <input type="number" id="TimeInYears" placeholder="Enter the duration in years">
+        </div>
+        <div class="button">
+            <button onclick="calculateCompoundInterest()">Calculate Compound Interest</button>
+        </div>
+        <div id="result" class="center"></div>
+        <div id="result" class="center"></div>
+                
+    </div> 
+
+    <script>
+        function calculateCompoundInterest() {
+          var principal = parseFloat(document.getElementById('principal').value);
+          var rate = parseFloat(document.getElementById('rate').value);
+          var TimeInYears = parseFloat(document.getElementById('TimeInYears').value);
+          var n = 12; // Number of times interest applied per time period (12 for monthly)
+      
+          var compoundInterest = principal * Math.pow((1 + (rate / (n * 100))), (n * TimeInYears)) - principal;
+          var totalAmount = principal + compoundInterest;
+        //   alert(interest)
+        //   alert(totalAmount)
+        document.getElementById('result').innerHTML = 'Compound Interest: Rs' + compoundInterest.toFixed(2) + '<br>Total Amount: Rs' + totalAmount.toFixed(2);
+  }
+      </script>
+</body>
+</html>
